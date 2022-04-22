@@ -1,0 +1,15 @@
+/home/ali/Evolution-Simulation/bin/Debug/net6.0/Evolution-Simulation
+/home/ali/Evolution-Simulation/bin/Debug/net6.0/Evolution-Simulation.deps.json
+/home/ali/Evolution-Simulation/bin/Debug/net6.0/Evolution-Simulation.runtimeconfig.json
+/home/ali/Evolution-Simulation/bin/Debug/net6.0/Evolution-Simulation.dll
+/home/ali/Evolution-Simulation/bin/Debug/net6.0/Evolution-Simulation.pdb
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.csproj.AssemblyReference.cache
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.GeneratedMSBuildEditorConfig.editorconfig
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.AssemblyInfoInputs.cache
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.AssemblyInfo.cs
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.csproj.CoreCompileInputs.cache
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.dll
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/refint/Evolution-Simulation.dll
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.pdb
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/Evolution-Simulation.genruntimeconfig.cache
+/home/ali/Evolution-Simulation/obj/Debug/net6.0/ref/Evolution-Simulation.dll
