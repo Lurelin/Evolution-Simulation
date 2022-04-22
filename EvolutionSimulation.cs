@@ -47,6 +47,9 @@ namespace Helloworld
                     Entities.Rabbits--;
                     food++;
                 }
+                if (food >= 2) {
+                    break;
+                }
             }
         }
         public void Reproduce() {
@@ -54,32 +57,30 @@ namespace Helloworld
                 Entities.NewHunterList.Add(new Hunter(4, 4, 4, name));
             }
             if (food >= 2) {
-                for (int z = 1; z < food; z++) {
-                    float NewSpeed = speed - 0.25f;
-                    float NewSight = sight - 0.25f;
-                    float NewStealth = stealth - 0.25f;
-                    Random TraitRandom = new Random();
-                    for (int t = 0; t < 3; t++) {
-                        int RandomInt = TraitRandom.Next(0, 3);
-                        if (RandomInt == 0) {
-                            NewSpeed += 0.25f;
-                        }
-                        if (RandomInt == 1) {
-                            NewSight += 0.25f;
-                        }
-                        if (RandomInt == 2) {
-                            NewStealth += 0.25f;
-                        }
+                float NewSpeed = speed - 0.25f;
+                float NewSight = sight - 0.25f;
+                float NewStealth = stealth - 0.25f;
+                Random TraitRandom = new Random();
+                for (int t = 0; t < 3; t++) {
+                    int RandomInt = TraitRandom.Next(0, 3);
+                    if (RandomInt == 0) {
+                        NewSpeed += 0.25f;
                     }
-                    Entities.NewHunterList.Add(new Hunter(NewSpeed, NewSight, NewStealth, Entities.NamesUsed + 1));
-                    Entities.NamesUsed++;
+                    if (RandomInt == 1) {
+                        NewSight += 0.25f;
+                    }
+                    if (RandomInt == 2) {
+                        NewStealth += 0.25f;
+                    }
                 }
+                Entities.NewHunterList.Add(new Hunter(NewSpeed, NewSight, NewStealth, Entities.NamesUsed + 1));
+                Entities.NamesUsed++;
             }
         }
     }
     public static class Bunny {
         static public float speed = 2;
-        static public float vigilance = 5;
+        static public float vigilance = 3;
         static public float stealth = 3;
     }
     class Program
