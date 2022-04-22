@@ -53,7 +53,7 @@ namespace Helloworld
             }
             if (food >= 2) {
                 for (int z = 1; z < food; z++) {
-                    Entities.NewHunterList.Add(new Hunter(4, 4, 4, name + Entities.Day));
+                    Entities.NewHunterList.Add(new Hunter(4, 4, 4, name + "C" + z + "D" + Entities.Day));
                 }
             }
         }
