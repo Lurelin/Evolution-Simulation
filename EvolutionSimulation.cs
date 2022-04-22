@@ -4,7 +4,7 @@ using System.IO;
 namespace Helloworld
 {  
     static public class Entities {
-        static public int Rabbits = 10;
+        static public int Rabbits = 100;
         static public int Day = 1;
 
         static public int NamesUsed = 0;
@@ -88,23 +88,13 @@ namespace Helloworld
         {
             File.Delete("EvolutionSimulationOutput.txt");
             using StreamWriter outputFile = new StreamWriter("EvolutionSimulationOutput.txt");
-
             Entities.HunterList.Add(new Hunter(4, 4, 4, 0));
-            for (int y = 1; y < 21; y++) {
+            
+            for (int y = 1; y < 101; y++) {
                 Entities.Day = y;
                 outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)));
                 outputFile.WriteLine("Day: " + Entities.Day + "      Entities: " + Entities.HunterList.Count);
                 outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)));
-                Entities.Rabbits = 10;
-                Entities.NewHunterList.Clear();
-                ShuffleHunterList();
-                foreach (Hunter Target in Entities.HunterList) {
-                    Target.Hunt();
-                    outputFile.WriteLine("Name: " + Target.name + " - Food: " + Target.food + " - Speed: " + Target.speed + " - Sight: " + Target.sight + " - Stealth: " + Target.stealth);
-                    Target.Reproduce();
-                }
-                Entities.HunterList.Clear();
-                Entities.HunterList.AddRange(Entities.NewHunterList);
                 float AverageSpeed = 0;
                 float AverageSight = 0;
                 float AverageStealth = 0;
@@ -119,11 +109,21 @@ namespace Helloworld
                 outputFile.WriteLine("Average Speed: " + AverageSpeed);
                 outputFile.WriteLine("Average Sight: " + AverageSight);
                 outputFile.WriteLine("Average Stealth: " + AverageStealth);
+                Entities.Rabbits = 100;
+                Entities.NewHunterList.Clear();
+                ShuffleHunterList();
+                foreach (Hunter Target in Entities.HunterList) {
+                    Target.Hunt();
+                    outputFile.WriteLine("Name: " + Target.name + " - Food: " + Target.food + " - Speed: " + Target.speed + " - Sight: " + Target.sight + " - Stealth: " + Target.stealth);
+                    Target.Reproduce();
+                }
+                Entities.HunterList.Clear();
+                Entities.HunterList.AddRange(Entities.NewHunterList);
             }
         }
         static void ShuffleHunterList() {
             Random rnglistorder = new Random();
-            Entities.HunterList.OrderBy(a => rnglistorder.Next());
+            Entities.HunterList = Entities.HunterList.OrderBy(a => rnglistorder.Next()).ToList();
         }
     }
 }
