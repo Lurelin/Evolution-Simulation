@@ -92,7 +92,9 @@ namespace Helloworld
             Entities.HunterList.Add(new Hunter(4, 4, 4, 0));
             for (int y = 1; y < 21; y++) {
                 Entities.Day = y;
-                outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)) + "\n" + "Day: " + Entities.Day + "      Entities: " + Entities.HunterList.Count + "\n" + string.Concat(Enumerable.Repeat("-", 100)));
+                outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)));
+                outputFile.WriteLine("Day: " + Entities.Day + "      Entities: " + Entities.HunterList.Count);
+                outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)));
                 Entities.Rabbits = 10;
                 Entities.NewHunterList.Clear();
                 ShuffleHunterList();
@@ -103,6 +105,20 @@ namespace Helloworld
                 }
                 Entities.HunterList.Clear();
                 Entities.HunterList.AddRange(Entities.NewHunterList);
+                float AverageSpeed = 0;
+                float AverageSight = 0;
+                float AverageStealth = 0;
+                foreach (Hunter Target in Entities.HunterList) {
+                    AverageSpeed += Target.speed;
+                    AverageSight += Target.sight;
+                    AverageStealth += Target.stealth;
+                }
+                AverageSpeed = AverageSpeed / Entities.HunterList.Count;
+                AverageSight = AverageSight / Entities.HunterList.Count;
+                AverageStealth = AverageStealth / Entities.HunterList.Count;
+                outputFile.WriteLine("Average Speed: " + AverageSpeed);
+                outputFile.WriteLine("Average Sight: " + AverageSight);
+                outputFile.WriteLine("Average Stealth: " + AverageStealth);
             }
         }
         static void ShuffleHunterList() {
