@@ -55,7 +55,23 @@ namespace Helloworld
             }
             if (food >= 2) {
                 for (int z = 1; z < food; z++) {
-                    Entities.NewHunterList.Add(new Hunter(4, 4, 4, Entities.NamesUsed + 1));
+                    float NewSpeed = speed - 0.25f;
+                    float NewSight = sight - 0.25f;
+                    float NewStealth = stealth - 0.25f;
+                    Random TraitRandom = new Random();
+                    for (int t = 0; t < 3; t++) {
+                        int RandomInt = TraitRandom.Next(0, 3);
+                        if (RandomInt == 0) {
+                            NewSpeed += 0.25f;
+                        }
+                        if (RandomInt == 1) {
+                            NewSight += 0.25f;
+                        }
+                        if (RandomInt == 2) {
+                            NewStealth += 0.25f;
+                        }
+                    }
+                    Entities.NewHunterList.Add(new Hunter(NewSpeed, NewSight, NewStealth, Entities.NamesUsed + 1));
                     Entities.NamesUsed++;
                 }
             }
@@ -74,15 +90,15 @@ namespace Helloworld
             using StreamWriter outputFile = new StreamWriter("EvolutionSimulationOutput.txt");
 
             Entities.HunterList.Add(new Hunter(4, 4, 4, 0));
-            for (int y = 1; y < 6; y++) {
+            for (int y = 1; y < 21; y++) {
                 Entities.Day = y;
-                outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)) + "\n" + "Day: " + Entities.Day + "\n" + string.Concat(Enumerable.Repeat("-", 100)));
+                outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)) + "\n" + "Day: " + Entities.Day + "      Entities: " + Entities.HunterList.Count + "\n" + string.Concat(Enumerable.Repeat("-", 100)));
                 Entities.Rabbits = 10;
                 Entities.NewHunterList.Clear();
                 ShuffleHunterList();
                 foreach (Hunter Target in Entities.HunterList) {
                     Target.Hunt();
-                    outputFile.WriteLine("Name: " + Target.name + "\nFood: " + Target.food + "\n");
+                    outputFile.WriteLine("Name: " + Target.name + " - Food: " + Target.food + " - Speed: " + Target.speed + " - Sight: " + Target.sight + " - Stealth: " + Target.stealth);
                     Target.Reproduce();
                 }
                 Entities.HunterList.Clear();
