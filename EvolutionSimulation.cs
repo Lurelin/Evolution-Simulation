@@ -5,22 +5,24 @@ namespace EvolutionSimulation
 {  
     public class Hunter {
         public float speed = 1;
+        public float vision = 2;
         public float energy = 15;
         public int name;
 
-        public Hunter(float SpeedInt, int nameInt) {
-            speed = SpeedInt;
+        public Hunter(float SpeedFloat, float visionFloat, int nameInt) {
+            speed = SpeedFloat;
+            vision = visionFloat;
             name = nameInt;
         }
         
         public void Exist() {
             Random rnd = new Random();
-            energy -= speed * 2;
+            energy -= speed * 5 + (vision - 2);
             if (energy <= 0) {
                 PubVars.NewHunterList.Remove(this);
             }
             if (energy > 15) {
-                PubVars.NewHunterList.Add(new Hunter(speed + rnd.Next(-25, 26) / 100f, PubVars.names));
+                PubVars.NewHunterList.Add(new Hunter(speed + rnd.Next(-25, 26) / 100f, vision + rnd.Next(-25, 26) / 100f, PubVars.names));
                 PubVars.names++;
                 energy -= 5;
             }
@@ -28,17 +30,16 @@ namespace EvolutionSimulation
 
         public void Hunt() {
             Random rnd = new Random();
-            if (rnd.Next(1, 101) <= 2 * PubVars.Rabbits) {
+            if (rnd.Next(1, 101) <= vision * PubVars.Rabbits && energy < 25) {
                 if (speed >= 1) {
                     float RabbitDistance = 2;
                     for (int i = 0; i < 3; i++) {
                         RabbitDistance -= speed - 1;
+                        energy -= speed / 2;
                         if (RabbitDistance <= 0) {
                             energy += 10;
                             PubVars.Rabbits--;
                             break;
-                        } else {
-                            energy -= speed / 2;
                         }
                     }
                     if (RabbitDistance <= speed) {
@@ -63,21 +64,19 @@ namespace EvolutionSimulation
             File.Delete("EvolutionSimulationOutput.txt");
             using StreamWriter outputFile = new StreamWriter("EvolutionSimulationOutput.txt");
             Random rand = new Random();
-            for (int e = 0; e < 25; e++) {
-                PubVars.HunterList.Add(new Hunter(rand.Next(75, 126) / 100f, PubVars.names));
+            for (int e = 0; e < 50; e++) {
+                PubVars.HunterList.Add(new Hunter(rand.Next(5, 26) / 100f, rand.Next(175, 226) / 100f, PubVars.names));
                 PubVars.names++;
             }
             for (int day = 0; day < 10000; day++) {
                 outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)));
                 outputFile.WriteLine("Day: " + day);
-                outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)));
                 DoStuff();
-                float AverageSpeed = 0;
+                outputFile.WriteLine("Rabbits: " + PubVars.Rabbits + "    Population: " + PubVars.HunterList.Count);  
+                outputFile.WriteLine(string.Concat(Enumerable.Repeat("-", 100)));
                 foreach (Hunter Target in PubVars.HunterList) {
-                    AverageSpeed += Target.speed;
-                    outputFile.WriteLine("Name: " + Target.name + "    Energy: " + Target.energy + "    Speed: " + Target.speed);
+                    outputFile.WriteLine("Name: " + Target.name + "    Energy: " + Target.energy + "    Speed: " + Target.speed + "    Vision: " + Target.vision);
                 }
-                AverageSpeed = AverageSpeed / PubVars.HunterList.Count;                
             }
         }
         static void DoStuff()
