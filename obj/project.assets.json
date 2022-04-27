@@ -8,24 +8,26 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/home/ali/.nuget/packages/": {}
+    "C:\\Users\\alija\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ali/Evolution-Simulation/Evolution-Simulation.csproj",
+      "projectUniqueName": "C:\\Users\\alija\\Evolution-Simulation\\Evolution-Simulation.csproj",
       "projectName": "Evolution-Simulation",
-      "projectPath": "/home/ali/Evolution-Simulation/Evolution-Simulation.csproj",
-      "packagesPath": "/home/ali/.nuget/packages/",
-      "outputPath": "/home/ali/Evolution-Simulation/obj/",
+      "projectPath": "C:\\Users\\alija\\Evolution-Simulation\\Evolution-Simulation.csproj",
+      "packagesPath": "C:\\Users\\alija\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alija\\Evolution-Simulation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/ali/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\alija\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -58,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/ali/.dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

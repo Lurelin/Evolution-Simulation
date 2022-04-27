@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5qnuN25BU8tZS/mnzk+dN6Qy0785+10gry2wHrELH3XdCVJF55AAU2K3j8B/HKQifiu+mTW+SQZvdch460F6lg==",
+  "dgSpecHash": "0N4YNm4wwrUsTwjDRU4Pyn1u0NxjRE+J91olF/kGgPfaMcBl0rlJqJs8CjcbT/t5lAkScxI7jS8JcrMcEdlCVw==",
   "success": true,
-  "projectFilePath": "/home/ali/Evolution-Simulation/Evolution-Simulation.csproj",
+  "projectFilePath": "C:\\Users\\alija\\Evolution-Simulation\\Evolution-Simulation.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
